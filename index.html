@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF=8">
+    <title>
+    sample_jquery
+    </title>
+    <!--jqueryのバージョンは各自利用するライブラリによって設定して下さい
+    jquery-1.系：XPまで。通常はサポート外。使用しない。
+    jquery-2.系、3.系：サポートブラウザに差はないが、処理の呼び出しが違い、動作しない場合がある。
+    min:軽量化したファイル。-->
+    <!--jquery本家よりCDN-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js">
+    </script>
+    <!--microsoftよりCDN
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js">
+    </script>
+    <!--googleよりCDN
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    
+    <!--css読み込み-->
+    <link rel="stylesheet" href="style.css">
+    <!--写真スライドのjqueryプラグイン-->
+    <script src="simple_slide.js"></script>
+    </head>
+<body>
+    <p>jqury_read_test・・・</p>
+    
+    <a class="oc"><img src="rename(2).jpg"></a>
+    
+    <p class="open">button</p>
+    <div id="slidebox">
+    スライドボックスのサンプルです。ボタンを押すと閉じたり、開いたりします。</div>
+    
+    <dl id="accordion">
+        <dt><a href="">menu1</a></dt>
+        <dd>
+            <a href="#">sub_menu1-1</a>
+            <a href="#">sub_menu1-2</a>
+        </dd>
+        <dt><a href="">menu2</a></dt>
+        <dd>
+            <a href="#">sub_menu2-1</a>
+            <a href="#">sub_menu2-2</a>
+        </dd>
+    </dl>
+    
+    <ul id="tabs">
+    <li><a href="#tab01">tab1</a></li>
+    <li><a href="#tab02">tab2</a></li>
+    </ul>
+    <div id="tab01" class="panel">内容１。タブパネルサンプルです。</div>
+    <div id="tab02" class="panel">内容２。タブを押すと切り替えになります。</div>
+    <div id="demo">
+        <div><img src="rename(2).jpg"></div>
+        <div><img src="rename(3).jpg"></div>
+        <div><img src="rename(6).jpg"></div>
+    </div>
+    
+<!--以下script-->
+<!--script読み込み完了アラート-->
+<script>
+$(document).ready(function(){
+  alert("jQuery_read_complete!");
+});
+
+//画像を半透明
+    $(function(){
+        $(".oc").hover(function(){
+//$(a img).hover(function(){ ←すべてのリンク付き画像に適応
+    $(this).fadeTo("normal", 0.6); // マウスオーバーで透明度を60%にする
+    },function(){
+    $(this).fadeTo("normal", 1.0); // マウスアウトで透明度を100%に戻す
+    });
+});    
+    
+//スライドボックス
+    $(function(){
+        $(".open").click(function(){
+            $("#slidebox").slideToggle("slow");
+        });
+    });
+    
+//アコーディオン    
+      $(function(){
+        $("#accordion dd").hide();
+        $("#accordion dt a").click(function(){
+            $("#accordion dd").slideUp();
+            $(this).parent().next().slideDown();
+            return false;
+            });
+    });
+    
+ //タブパネル
+        $(function(){
+            $(".panel:not(:first)").hide();
+            $("#tabs a").click(function(){
+                $(".panel").hide();
+                $(".panel").filter(this.hash).show();
+                $("#tabs a").removeClass("selected");
+                $(this).addClass("selected");
+                return false;
+                }).filter(":first").click();
+    });
+//写真のスライド
+        $(function(){
+            $("#demo").simpleSlide(2000);
+        });
+    </script>
+    </body>
+</html>
