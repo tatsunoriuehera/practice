@@ -1,0 +1,37 @@
+nav li{
+    display:block;
+    width:80;
+    float:left;
+}
+
+nav a{
+    color:#fff;
+    background:#69e;
+    displya:block;
+    line-height:1.0px;
+    paddin:6px 0;
+    border-left:1px slid #fff;
+    text-align:center;
+    text-decoration:none;
+}
+
+nav a:hover{
+    background:#f6d;
+}
+
+.open{
+    width:50px;
+    margin:10px 0;
+    padding:10px;
+    background:#66cc99;
+    cursor:pointer;
+}
+#slidebox{
+    display:none;
+    padding:10px;
+    border:1px solid #bfffbf;
+}
+
+.selected{
+    background:#ccc;
+}
