@@ -1,60 +1,90 @@
 <!--このテキストはHTMLです。-->
-<!doctype html>
+<!DOCUTYPE html>
 <!--このHTMLは日本語を扱う-->
 <html lang="ja">
 <head>
 <!--HTMLの文字コードの設定-->
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <!--サイトのタイトル-->
-    <header>
-        <h1>HTML学習用の練習ページ</h1>
-    </header>
+<header>
+    <h1>HTML+CSS+javascript+JQuery学習用の練習ページ</h1>
+</header>
 <title>sample page</title>
-<script src="test.js">
-    </script>
-<link href="css3.css" rel="stylesheet">
+<!--javascriptの読み込み-->
+<script src="model.js"></script>
+ <!--cssの読み込み-->   
+<link href="model.css" rel="stylesheet">
+<!--jqueryのバージョンは各自利用するライブラリによって設定して下さい
+jquery-1.系：XPまで。通常はサポート外。使用しない。
+jquery-2.系、3.系：サポートブラウザに差はないが、処理の呼び出しが違い、動作しない場合がある。
+min:軽量化したファイル。
+<!--jquery本家よりCDN-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js">
+</script>
+<!--microsoftよりCDN
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js">
+</script>
+<!--googleよりCDN
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 </head>
 <body>
-<h1>sample page title</h1>
-<p>あああ</p>
-
-<div id="T1"></div>
-    <input type="button" value="OK" onclick="ohayou()">
-    <input type="button" value="Click Me!!" onclick="window.alert('ハロー')">
-    <a href="javascript:alert('ハロー')">click me</a>
-    <input type="button" value="good night" onclick="oyasumi()">
-    
-    <nav>
-        <ul>
-        <li><a href="#">ご挨拶</a></li>
-        <li><a href="#">会社案内</a></li>
-        <li><a href="#">営業案内</a></li>
-        <li><a href="#">営業日</a></li>
-        <li><a href="#">アクセス</a></li>
-        <li><a href="#">採用情報</a></li>
-        <li><a href="#">問い合わせ</a></li>
-        </ul>
-    </nav>
-    <div id="branding">
-    <p>simple disign.</p>
-    </div>
+    <h1>sample page title</h1>
+    <p>↓現在時刻の取得↓</p>
+    <div id="T1"></div>
+    <p>↓読み込みした瞬間の時間取得↓</p>
     <script>
         dd=new Date();
         document.write(dd.toLocaleString());
     </script>
+    <p>↓alert_test↓</p>
+    <input type="button" value="goodnight" onclick="oyasumi()">
+    <input type="button" value="Click Me!!" onclick="window.alert('ah!')">
+    <a href="javascript:alert('oh!')">click me</a>
+    
+    <nav>
+        <ul>
+            <li><a href="http://ukaki.php.xdomain.jp/" target="_blank">go_to_wordpress</a></li>
+        </ul>
+    </nav>
+
+    <table border="1">
+        <!--　テーブルヘッダー　--> 
+        <thead>
+            <th>lank</th><th>都道府県</th><th>出荷量</th>
+        </thead>
+        <tbody>
+            <tr><td>一位</td><td>和歌山</td><td>53900</td></tr>
+        </tbody>
+    </table>
+    
+    <div id="branding">
+        <p>simple disign.</p>
+    </div>
+    <a class="oc" href="HIRO95_yuubaenokage_TP_V.jpg" target="_blank"><img src="HIRO95_yuubaenokage_TP_V_s.jpg"></a><br>
+    <p>presented by<a href="https://www.pakutaso.com/" target="_blank"><img src="pakutaso_logo2014.png" width="150" height="45"></a></p>
     <footer>
-        <small>2009-2018 (c)Copyright Utsunomiya Kaki.All right reserved.
-        </small>
+        <small>2009-2018 (c)〇〇.All right reserved.</small>
     </footer>
+    
+    <!-- 以下script </body>の直前に記述すると読み込みが早い-->
     <script>
-        window.onload = function() {
+    /* htmlの読み込みが終わったら実行 */
+    window.onload = function() {
         window.setInterval(function() {
         var dd = new Date();
         document.getElementById("T1").innerHTML = dd.toLocaleString();
         }, 1000);
     }   
-        alert("hello world");
-
+        alert("welcomo to test_page");
+    //画像を半透明
+    $(function(){
+        $(".oc").hover(function(){
+//$(a img).hover(function(){ ←すべてのリンク付き画像に適応
+    $(this).fadeTo("normal", 0.6); // マウスオーバーで透明度を60%にする
+    },function(){
+    $(this).fadeTo("normal", 1.0); // マウスアウトで透明度を100%に戻す
+    });
+});   
     </script>
-    </body>
+</body>
 </html>
